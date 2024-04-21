@@ -1,0 +1,50 @@
+Terraria: Tears of the Kingdom Mod is here!
+
+This mod adds materials, weapons, and bows that you can fuse to each other for unique properties.
+
+All materials, weapons, and more are included below.
+Note: This does not contain the fuse combinations... so you have to find out yourself! (or use Heros mod..).
+
+Fusable Materials (Arrows):
+   - Bomb Flower
+   - Fire Fruit
+   - Ice Fruit
+   - Keese Eyeballs
+   - Muddle Bud
+   - Puffshroom
+   - Dazzle Fruit
+   - Fire Keese Eyeball
+   - Ice Keese Eyeball
+   - Ancient Arrow. (Not made with fuse, even though it is in TotK)
+
+Fusable Materials (Weapons):
+   - Fire-breath Lizalfos Horn
+   - Shard of Light
+   - Lizalfos Tail
+   - [Other Weapons]
+
+Weapons: 
+   - Gloom Sword
+   - Gloom Club
+   - Gloom Spear
+   - Wooden Stick
+   - Thick Stick
+   - Long Stick
+
+Bows:
+   - Demon King's Bow
+
+Other:
+   - Zonaite (Currency-like)
+   - Steward Construct (Crafting station)
+   - Dark Clump (Accessory)
+   - BrightbloomSeed (Torch)
+
+Update Log:
+v1.2: Resprite update. Also adds Ancient Arrow, and fixes Gloom. + Balancing.
+v1.1.1: Temporary change to Gloom. Only removed life, not max life.
+v1.1: Arrow Fusions update
+v1.0: Public Release
+v0.2: Balanced Club
+v0.1: Fixed issue where you wouldn't be able to place the Steward Construct.
+v0.0: Private Release for playtesting.

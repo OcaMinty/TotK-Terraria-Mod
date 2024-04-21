@@ -1,0 +1,67 @@
+﻿using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.GameContent.Creative;
+using Terraria.ModLoader;
+using System.Security.Cryptography.X509Certificates;
+using totk.Content.Rarities;
+using totk.Content.Buffs;
+using totk.Content.Items.Materials;
+using totk.Content.Tiles;
+
+namespace totk.Content.Items.Weapons.Gloom.Club
+{
+    public class GloomClub : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            // DisplayName.SetDefault("Gloom Club");
+            // Tooltip.SetDefault("'Forbidden Eggplant'?\nSlowly eats away at your Max Health. Be warned."); // The (English) text shown below your weapon's name.
+
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 710;
+            Item.height = 710;
+            Item.useStyle = ItemUseStyleID.Swing; // The useStyle of the Item.
+            Item.useTime = 100; // The time span of using the weapon. Remember in terraria, 60 frames is a second.
+            Item.useAnimation = 40; // The time span of the using animation of the weapon, suggest setting it the same as useTime.
+
+            Item.DamageType = DamageClass.Melee; // Whether your item is part of the melee class.
+            Item.damage = 310; // The damage your item deals.
+            Item.knockBack = 15; // The force of knockback of the weapon. Maximum is 20
+            Item.crit = 6; // The critical strike chance the weapon has. The player, by default, has a 4% critical strike chance.
+
+            Item.value = Item.buyPrice(silver: 55); // The value of the weapon in copper coins.
+            Item.UseSound = SoundID.Item1; // The sound when the weapon is being used.
+
+            Item.rare = ModContent.RarityType<DeadlyRarity>();
+        }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                // Emit dusts when the sword is swung
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Ash);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Blood);
+            }
+        }
+
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            player.AddBuff(ModContent.BuffType<Buffs.Gloom>(), 5);
+            target.lifeMax -= 20;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<Zonaite>(), 1100)
+                .AddIngredient(ItemID.LunarBar, 30)
+                .AddTile(ModContent.TileType<Construct>())
+                .Register();
+        }
+    }
+}

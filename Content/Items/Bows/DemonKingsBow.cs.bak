@@ -1,0 +1,53 @@
+﻿using Terraria.ID;
+using Terraria.GameContent.Creative;
+using Terraria.ModLoader;
+using IL.Terraria;
+using Microsoft.Xna.Framework;
+using Terraria;
+using totk.Content.Items.Materials;
+using totk.Content.Tiles;
+
+namespace totk.Content.Items.Bows
+{
+    public class DemonKingsBow : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Demon King's Bow");
+            Tooltip.SetDefault("The higher your health, the more damage you deal.");
+
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.damage = 40;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 34;
+            Item.height = 40;
+            Item.useTime = 32;
+            Item.useAnimation = 32;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.rare = ItemRarityID.LightPurple;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shootSpeed = 10;
+            Item.crit = 4;
+            Item.useAmmo = AmmoID.Arrow;
+            Item.shoot = ProjectileID.WoodenArrowFriendly;
+        }
+
+        public override void UpdateInventory(Terraria.Player player)
+        {
+            Item.damage = player.statLife / 2;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<Zonaite>(), 810)
+                .AddTile(ModContent.TileType<Construct>())
+                .Register();
+        }
+    }
+}

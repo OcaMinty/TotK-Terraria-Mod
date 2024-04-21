@@ -1,0 +1,43 @@
+﻿using Terraria;
+using Terraria.ModLoader;
+using totk.Content.Items.Materials;
+using totk.Content.Tiles;
+
+namespace totk.Content.Items.Accessories
+{
+    public class DarkClump : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            // Tooltip.SetDefault("Slow down the affects of gloom.");
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 34;
+            Item.height = 34;
+            Item.maxStack = 1;
+            Item.value = Item.sellPrice(0, 0);
+            Item.accessory = true;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.GetModPlayer<GloomLimit>().HasGloomLimit = true;
+        }
+    }
+}
+
+namespace totk.Content.Items.Accessories
+{
+    public class GloomLimit : ModPlayer
+    {
+        public bool HasGloomLimit;
+
+        public override void ResetEffects()
+        {
+            HasGloomLimit = false;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+﻿using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using totk.Content.Projectiles.Consumables;
+using totk.Content.Tiles;
+
+namespace totk.Content.Items.Materials
+{
+    public class BombFlower : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[Type] = true;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.shootSpeed = 12f;
+            Item.shoot = ModContent.ProjectileType<BombFlowerProjectile>();
+            Item.width = 8;
+            Item.height = 28;
+            Item.consumable = true;
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 40;
+            Item.useTime = 40;
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.value = Item.buyPrice(0, 0, 0, 70);
+            Item.rare = ItemRarityID.Blue;
+            Item.maxStack = 9999;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<Zonaite>(), 15)
+                .AddTile(ModContent.TileType<Construct>())
+                .Register();
+        }
+    }
+}
